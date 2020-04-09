@@ -1,0 +1,10 @@
+msg:
+  greeting: !Template |
+    Hello {{ first_name }} 🙂
+    Please send your FAKE email for nothing.
+
+  user_email:
+    success: Thanks, I saved it.
+    error: |
+      Sorry, the email is invalid.
+      Please enter it again.
