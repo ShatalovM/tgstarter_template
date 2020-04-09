@@ -6,11 +6,11 @@ import addict
 
 from tgstarter import Dispatcher, MongoStorage
 
-from .models.config import BaseConfig
-from .utils import yaml_tools
+from models.config import BaseConfig
+from utils import yaml_tools
 
 
-jinja2_env = jinja2.Environment()
+jinja2_env = jinja2.Environment(autoescape=True)
 
 
 yaml.add_constructor(

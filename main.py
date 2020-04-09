@@ -1,6 +1,6 @@
 from aiogram import executor
 
-from tgstarter_template.preparation import dispatcher
+from preparation import dispatcher
 
 
 if __name__ == '__main__':
