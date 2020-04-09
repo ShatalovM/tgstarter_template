@@ -8,6 +8,7 @@ authors = ["eboshare <t.lila@list.ru>"]
 python = "^3.7"
 pydantic = "^1.4"
 tgstarter = {git = "https://github.com/tgstarter/tgstarter", branch = "master"}
+django = "^3.0.5"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
