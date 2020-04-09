@@ -1,0 +1,11 @@
+bot:
+  token: 123456789:XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  proxy: null
+  parse_mode: HTML
+  states_dir: ./states
+
+mongo:
+  uri: mongodb://localhost:27017
+  dbname: AsyncTelegramStarter
+  collections:
+    - users
