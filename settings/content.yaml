@@ -8,3 +8,22 @@ msg:
     error: |
       Sorry, the email is invalid.
       Please enter it again.
+
+  test_reply_markup:
+    text: Send it again?
+    reply_markup: !ReplyKeyboardMarkup
+      - ["Yes", "Sure"]
+
+  test_inline_keyboard:
+    text: Inline keyboard test
+    callbacks:
+      option1: !CallbackStr &option1 OPTION-1 
+      option2: !CallbackStr &option2 OPTION-2 
+    inline_keyboard: !InlineKeyboardMarkup
+      -
+        -
+          text: Optoin-1
+          callback_data: *option1
+        -
+          text: Optoin-2
+          callback_data: *option2

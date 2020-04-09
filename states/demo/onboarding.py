@@ -27,4 +27,11 @@ async def user_email(msg: Message):
 
 @dp.state_handler(bound=dp.message_handler)
 async def dummy_state(msg: Message):
-    pass
+    await msg.answer(
+        text=content.msg.test_inline_keyboard.text,
+        reply_markup=content.msg.test_inline_keyboard.inline_keyboard
+    )
+    await msg.answer(
+        text=content.msg.test_reply_markup.text,
+        reply_markup=content.msg.test_reply_markup.reply_markup
+    )

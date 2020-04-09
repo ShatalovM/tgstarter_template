@@ -459,10 +459,9 @@ extras = ["speedups"]
 version = "^3.6.2"
 
 [package.source]
-reference = "57afb6540d0f2ec1a55a0d3ef6a6d3eb07e0c62a"
+reference = "f7e957a6e3bea2072dcac5df0222b1136acb0d0b"
 type = "git"
 url = "https://github.com/tgstarter/tgstarter"
-
 [[package]]
 category = "main"
 description = "Ultra fast JSON encoder and decoder for Python"

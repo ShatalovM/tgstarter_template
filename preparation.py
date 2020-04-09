@@ -7,7 +7,7 @@ import addict
 from tgstarter import Dispatcher, MongoStorage
 
 from models.config import BaseConfig
-from utils import yaml_tools
+from tgstarter.utils import yaml_tools
 
 
 jinja2_env = jinja2.Environment(autoescape=True)
@@ -16,7 +16,23 @@ jinja2_env = jinja2.Environment(autoescape=True)
 yaml.add_constructor(
     tag='!Template',
     constructor=yaml_tools.get_template_constructor(
-        jinja2_env=jinja2_env),
+        jinja2_env=jinja2_env
+    ),
+    Loader=yaml.SafeLoader
+)
+yaml.add_constructor(
+    tag='!ReplyKeyboardMarkup',
+    constructor=yaml_tools.reply_markup_constructor,
+    Loader=yaml.SafeLoader
+)
+yaml.add_constructor(
+    tag='!CallbackStr',
+    constructor=yaml_tools.get_callback_string_constructor(),
+    Loader=yaml.SafeLoader
+)
+yaml.add_constructor(
+    tag='!InlineKeyboardMarkup',
+    constructor=yaml_tools.inline_keyboard_constructor,
     Loader=yaml.SafeLoader
 )
 
