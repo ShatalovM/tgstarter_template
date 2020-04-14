@@ -1,20 +1,24 @@
 from typing import Optional, List
-from enum import auto
 
-from pydantic import BaseModel
-from tgstarter.utils.helper import NamedEnum
-
-
-class ParseMode(str, NamedEnum):
-    HTML = auto()
-    Markdown = auto()
+import pytz
+from pydantic import BaseModel, validator
+# from aiogram.types import ParseMode
 
 
 class BotConfig(BaseModel):
+
+    @validator('timezone', pre=True)
+    def timezone_validator(cls, zone: str) -> pytz.tzinfo.DstTzInfo:
+        return pytz.timezone(zone)
+
+    class Config:
+        arbitrary_types_allowed = True
+
     token: str
     proxy: Optional[str]
-    parse_mode: ParseMode
+    parse_mode: str
     states_dir: str
+    timezone: pytz.tzinfo.DstTzInfo
 
 
 class MongoConfig(BaseModel):

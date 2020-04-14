@@ -3,6 +3,7 @@ bot:
   proxy: null
   parse_mode: HTML
   states_dir: states
+  timezone: Europe/Moscow
 
 mongo:
   uri: mongodb://localhost:27017/

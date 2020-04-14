@@ -24,9 +24,9 @@ async def user_email(msg: Message):
     try:
         EMAIL_FIELD.clean(msg.text)
     except forms.ValidationError:
-        await msg.answer(content.onboarding.user_email__error)
+        await msg.answer(content.onboarding.user_email.error)
     else:
-        await msg.answer(content.onboarding.user_email__success)
+        await msg.answer(content.onboarding.user_email.success)
         # here must be logic to save the email somewhere :)
         return dummy_state
 
@@ -34,10 +34,10 @@ async def user_email(msg: Message):
 @dp.state_handler(bound=dp.message_handler)
 async def dummy_state(msg: Message):
     await msg.answer(
-        text=content.onboarding.test_inline_markup__text,
-        reply_markup=content.onboarding.test_inline_markup__keyboard
+        text=content.onboarding.test_inline_keyboard.text,
+        reply_markup=content.onboarding.test_inline_keyboard.reply_markup
     )
     await msg.answer(
-        text=content.onboarding.test_reply_markup__text,
-        reply_markup=content.onboarding.test_reply_markup__keyboard
+        text=content.onboarding.test_keyboard.text,
+        reply_markup=content.onboarding.test_keyboard.reply_markup
     )

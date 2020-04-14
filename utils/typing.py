@@ -1,0 +1,2 @@
+ChatId = int
+UserId = int
