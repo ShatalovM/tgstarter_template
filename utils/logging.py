@@ -23,7 +23,7 @@ async def log_event(
         type=type,
         update=update,
         task=task,
-        from_bo=from_bot,
+        from_bot=from_bot,
         exc_info=exc_info
     )
     return await bot.send_large_message(chat_id=config.bot.error_chat_id, text=text)

@@ -3,7 +3,7 @@ from typing import NoReturn
 
 from aiogram.dispatcher.handler import SkipHandler
 from aiogram import types
-from tgstarter.models.storage import LogLevel
+from tgstarter.models.storage import LogLevel, LogType
 
 from utils.logging import log_event
 from preparation import logger, dispatcher as dp
@@ -20,6 +20,7 @@ async def log_error(update: types.Update, error: Exception) -> bool:
     await log_event(
         update=update,
         level=LogLevel.ERROR,
+        type=LogType.EVENT,
         exc_info=sys.exc_info()
     )
     return True  # for aiogram
