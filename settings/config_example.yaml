@@ -1,12 +1,33 @@
+# unnecessary fields
+dev_chat_id: &dev_chat_id 123456789
+
+mongo_uri: &mongo_uri mongodb://localhost:27017/
+mongo_dbname: &mongo_dbname AsyncTelegramStarter
+
+
+# necessary
 bot:
   token: 123456789:XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
   proxy: null
   parse_mode: HTML
   states_dir: states
   timezone: Europe/Moscow
+  error_chat_id: *dev_chat_id
 
 mongo:
-  uri: mongodb://localhost:27017/
-  dbname: AsyncTelegramStarter
+  uri: *mongo_uri
+  dbname: *mongo_dbname
   collections:
     - users
+
+  logging:
+    uri: *mongo_uri
+    dbname: *mongo_dbname
+    collection: logs
+    message_format: |
+      ⚠️ {{ error_type }}: {{ error_value }}
+
+      UTC Datetime: {{ datetime }}
+      ObjectId: {{ object_id }}
+
+      {{ traceback }}

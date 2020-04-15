@@ -503,7 +503,7 @@ extras = ["speedups"]
 version = "^3.6.2"
 
 [package.source]
-reference = "5a0f798ada2620fa97a26d194beb843523dd32f4"
+reference = "1a9f4e31319fd0d6df0858ca074f0679c91a0aad"
 type = "git"
 url = "https://github.com/tgstarter/tgstarter"
 [[package]]

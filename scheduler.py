@@ -1,6 +1,7 @@
 import asyncio
 from datetime import datetime
 import calendar
+import logging
 
 from apscheduler.triggers.cron import CronTrigger
 from apscheduler.triggers.date import DateTrigger
@@ -31,4 +32,5 @@ async def interval_job() -> None:
 
 
 if __name__ == '__main__':
+    logging.basicConfig(level=logging.DEBUG)
     main()

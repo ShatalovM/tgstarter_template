@@ -3,13 +3,10 @@ from typing import NoReturn
 
 from aiogram.dispatcher.handler import SkipHandler
 from aiogram import types
+from tgstarter.models.storage import LogLevel
 
-from preparation import (
-    config,
-    logger,
-    bot,
-    dispatcher as dp
-)
+from utils.logging import log_event
+from preparation import logger, dispatcher as dp
 
 
 @dp.any_update_handler()
@@ -20,9 +17,9 @@ async def log_update(update: types.Update) -> NoReturn:
 
 @dp.state_handler(bound=dp.errors_handler)
 async def log_error(update: types.Update, error: Exception) -> bool:
-    text = await logger.error(update=update, exc_info=sys.exc_info())
-    await bot.send_message(
-        chat_id=config.bot.error_chat_id,
-        text=text
+    await log_event(
+        update=update,
+        level=LogLevel.ERROR,
+        exc_info=sys.exc_info()
     )
     return True  # for aiogram
