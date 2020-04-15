@@ -1,4 +1,3 @@
-from aiogram import Bot
 from aiogram.utils.exceptions import (
     BotBlocked,
     ChatNotFound,
@@ -11,7 +10,7 @@ from motor.motor_asyncio import AsyncIOMotorClient
 import yaml
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 
-from tgstarter import Dispatcher, MongoStorage
+from tgstarter import Bot, Dispatcher, MongoStorage, MongoLogger
 from tgstarter.utils import jinja2_filters
 
 from models.config import BaseConfig
@@ -43,16 +42,26 @@ jinja2_env.filters['fullname'] = jinja2_filters.fullname_jinja2_filter
 template = helper.get_template_function(jinja2_env=jinja2_env)
 
 
+MONGO_CLIENT = AsyncIOMotorClient(config.mongo.uri)
+storage = MongoStorage(
+    mongo_client=MONGO_CLIENT,
+    mongo_database=MONGO_CLIENT[config.mongo.dbname],
+)
+
+MONGO_LOGGING_CLIENT = AsyncIOMotorClient(config.mongo.logging.uri)
+logger = MongoLogger(
+    mongo_client=MONGO_LOGGING_CLIENT,
+    mongo_database=MONGO_LOGGING_CLIENT[config.mongo.logging.dbname],
+    collection_name=config.mongo.logging.collection,
+    timezone=config.bot.timezone,
+    message_format=template(config.mongo.logging.message_format),
+)
+
+
 bot = Bot(
     token=config.bot.token,
     proxy=config.bot.proxy,
     parse_mode=config.bot.parse_mode,
-)
-
-mongo_client = AsyncIOMotorClient(config.mongo.uri)
-storage = MongoStorage(
-    mongo_client=mongo_client,
-    mongo_database=mongo_client[config.mongo.dbname]
 )
 
 dispatcher = Dispatcher(
@@ -60,5 +69,6 @@ dispatcher = Dispatcher(
     bot=bot,
     storage=storage,
 )
+
 
 scheduler = AsyncIOScheduler(timezone=config.bot.timezone)

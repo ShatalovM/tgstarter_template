@@ -503,10 +503,9 @@ extras = ["speedups"]
 version = "^3.6.2"
 
 [package.source]
-reference = "27d0b358dd8e77f8ce3ce8a08c91c163f1596090"
+reference = "5a0f798ada2620fa97a26d194beb843523dd32f4"
 type = "git"
 url = "https://github.com/tgstarter/tgstarter"
-
 [[package]]
 category = "main"
 description = "tzinfo object for the local timezone"

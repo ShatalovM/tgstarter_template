@@ -19,12 +19,21 @@ class BotConfig(BaseModel):
     parse_mode: str
     states_dir: str
     timezone: pytz.tzinfo.DstTzInfo
+    error_chat_id: int
+
+
+class MongoLogging(BaseModel):
+    uri: str
+    dbname: str
+    collection: str
+    message_format: str
 
 
 class MongoConfig(BaseModel):
     uri: str
     dbname: str
     collections: List[str]
+    logging: MongoLogging
 
 
 class BaseConfig(BaseModel):
