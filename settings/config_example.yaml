@@ -1,8 +1,9 @@
 # unnecessary fields
-dev_chat_id: &dev_chat_id 123456789
+anchors:
+  dev_chat_id: &dev_chat_id 123456789
 
-mongo_uri: &mongo_uri mongodb://localhost:27017/
-mongo_dbname: &mongo_dbname AsyncTelegramStarter
+  mongo_uri: &mongo_uri mongodb://localhost:27017/
+  mongo_dbname: &mongo_dbname AsyncTelegramStarter
 
 
 # necessary
