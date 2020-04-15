@@ -26,9 +26,9 @@ mongo:
     dbname: *mongo_dbname
     collection: logs
     message_format: |
-      ⚠️ {{ error_type }}: {{ error_value }}
+      ⚠️ <b>{{ error_type }}: {{ error_value }}</b>
 
-      UTC Datetime: {{ datetime }}
-      ObjectId: {{ object_id }}
+      <b>UTC Datetime</b>: <code>{{ datetime }}</code>
+      <b>ObjectId</b>: <code>{{ object_id }}</code>
 
       {{ traceback }}
