@@ -26,7 +26,7 @@ async def log_event(
         from_bo=from_bot,
         exc_info=exc_info
     )
-    return await bot.send_message(chat_id=config.bot.error_chat_id, text=text)
+    return await bot.send_large_message(chat_id=config.bot.error_chat_id, text=text)
 
 
 def task_logger(
@@ -55,7 +55,7 @@ def task_logger(
                     from_bot=from_bot,
                     exc_info=sys.exc_info()
                 )
-                await bot.send_message(chat_id=config.bot.error_chat_id, text=text)
+                await bot.send_large_message(chat_id=config.bot.error_chat_id, text=text)
             else:
                 task.result = callback_result
                 await logger.log(
