@@ -1,4 +1,4 @@
-from aiogram.types import Message
+from aiogram.types import Message, ReplyKeyboardRemove
 from django import forms
 
 from preparation import dispatcher as dp
@@ -12,9 +12,10 @@ EMAIL_FIELD = forms.EmailField()
 @dp.state_handler(primary_state=True, bound=dp.message_handler)
 async def greeting(msg: Message):
     await msg.answer(
-        text=content.onboarding.greeting.render(
+        text=content.onboarding.greeting.text.render(
             first_name=msg.from_user.first_name
-        )
+        ),
+        reply_markup=ReplyKeyboardRemove()
     )
     return user_email
 
@@ -24,9 +25,9 @@ async def user_email(msg: Message):
     try:
         EMAIL_FIELD.clean(msg.text)
     except forms.ValidationError:
-        await msg.answer(content.onboarding.user_email.error)
+        await msg.answer(content.onboarding.user_email.invalid)
     else:
-        await msg.answer(content.onboarding.user_email.success)
+        await msg.answer(content.onboarding.user_email.valid)
         # here must be logic to save the email somewhere :)
         return dummy_state
 

@@ -12,6 +12,7 @@ from apscheduler.schedulers.asyncio import AsyncIOScheduler
 
 from tgstarter import Bot, Dispatcher, MongoStorage, MongoLogger
 from tgstarter.utils import jinja2_filters
+from tgstarter.utils.content import ContentValidator
 
 from models.config import BaseConfig
 from tgstarter.utils import yaml_tools, helper
@@ -40,6 +41,13 @@ config = BaseConfig(**YAMLS[CONFIG_PATH])
 jinja2_env = jinja2.Environment(autoescape=True)
 jinja2_env.filters['fullname'] = jinja2_filters.fullname_jinja2_filter
 template = helper.get_template_function(jinja2_env=jinja2_env)
+
+
+validator = ContentValidator(
+    delete_indentation=helper.delete_indentation,
+    create_jinja2_template=jinja2_env.from_string,
+)
+validated_class = validator.validated_class
 
 
 MONGO_CLIENT = AsyncIOMotorClient(config.mongo.uri)

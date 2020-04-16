@@ -1,29 +1,35 @@
-from textwrap import dedent
-
 from aiogram.types import (
     KeyboardButton as Button,
     InlineKeyboardButton as InlineButton,
 )
+from jinja2 import Template
 from tgstarter.utils.helper import (
     ReplyKeyboardMarkup as Keyboard,
     InlineKeyboardMarkup as InlineKeyboard,
 )
 
-from preparation import template
+from preparation import validated_class
 
 
-greeting = template('''
+@validated_class
+class greeting:
+    text: Template = '''
     Hello {{ first_name }} 🙂
     Please send your FAKE email for nothing.
-''')
+    '''
 
 
+@validated_class
 class user_email:
-    success = 'Thanks, I saved it.'
-    error = dedent('''
+    valid = '''
+    Thanks, I saved it.
+    Text me something.
+    '''
+
+    invalid = '''
     Sorry, the email is invalid.
     Please enter it again.
-    ''')
+    '''
 
 
 class test_keyboard:
