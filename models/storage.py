@@ -4,7 +4,6 @@ from typing import (
     Any,
     Union,
 )
-from enum import auto, Enum
 
 from pydantic import (
     BaseModel,
@@ -12,7 +11,7 @@ from pydantic import (
     Field,
 )
 from bson.objectid import ObjectId
-from tgstarter.utils.helper import FlagEnum
+from tgstarter.utils.helper import FlagEnum, auto
 from utils.typing import UserId, ChatId
 
 
@@ -32,12 +31,12 @@ class MongoObject(BaseModel):
 
 
 class UserFlag(str, FlagEnum):
-    MATCHING_WAITING: Enum = auto()
-    MATCHED: Enum = auto()
+    MATCHING_WAITING = auto()
+    MATCHED = auto()
 
 
 class UserVar(str, FlagEnum):
-    reserved_state: Enum = auto()
+    reserved_state = auto()
 
 
 class TelegramUser(BaseModel):
@@ -47,8 +46,8 @@ class TelegramUser(BaseModel):
 
 
 class UserRights(str, FlagEnum):
-    ADMIN: Enum = auto()
-    MEMBER: Enum = auto()
+    ADMIN = auto()
+    MEMBER = auto()
 
 
 class UserData(BaseModel):
