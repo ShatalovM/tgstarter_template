@@ -2,7 +2,6 @@ from aiogram.types import Message, ReplyKeyboardRemove
 from django import forms
 
 from preparation import dispatcher as dp
-# import settings.content as content
 from settings import content
 
 
