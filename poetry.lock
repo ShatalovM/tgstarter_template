@@ -23,7 +23,7 @@ description = "Is a pretty simple and fully asynchronous framework for Telegram 
 name = "aiogram"
 optional = false
 python-versions = "*"
-version = "2.9"
+version = "2.9.2"
 
 [package.dependencies]
 Babel = ">=2.6.0"
@@ -503,7 +503,7 @@ extras = ["speedups"]
 version = "^3.6.2"
 
 [package.source]
-reference = "7616eb26d49415753f69d4d949f2de8eb6c95bda"
+reference = "49e5a969adf61258cd0f21abddb4f34b23cf03cb"
 type = "git"
 url = "https://github.com/tgstarter/tgstarter"
 [[package]]
@@ -580,8 +580,8 @@ aiodns = [
     {file = "aiodns-2.0.0.tar.gz", hash = "sha256:815fdef4607474295d68da46978a54481dd1e7be153c7d60f9e72773cd38d77d"},
 ]
 aiogram = [
-    {file = "aiogram-2.9-py3-none-any.whl", hash = "sha256:684d3bb5b71808dc50319cd71dfe7820680bf9f27b13db7188975dd3b5254101"},
-    {file = "aiogram-2.9.tar.gz", hash = "sha256:6194933b16404140ecddb84602253f90f50ccf746b060bb69747018744c50328"},
+    {file = "aiogram-2.9.2-py3-none-any.whl", hash = "sha256:6ec9fe9a8fea1db1a3b515afd4d0ff582ccc771ab1be1d6e79fb84c94ee7f822"},
+    {file = "aiogram-2.9.2.tar.gz", hash = "sha256:3bbe4237b8e11a347bbc47a07c1cf331ceceda2881317e8760d1e330af191dcb"},
 ]
 aiohttp = [
     {file = "aiohttp-3.6.2-cp35-cp35m-macosx_10_13_x86_64.whl", hash = "sha256:1e984191d1ec186881ffaed4581092ba04f7c61582a177b187d3a2f07ed9719e"},
