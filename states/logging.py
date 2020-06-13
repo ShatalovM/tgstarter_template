@@ -15,7 +15,7 @@ async def log_update(update: types.Update) -> NoReturn:
     raise SkipHandler
 
 
-@dp.state_handler(bound=dp.errors_handler)
+@dp.errors_handler()
 async def log_error(update: types.Update, error: Exception) -> bool:
     await log_event(
         update=update,
