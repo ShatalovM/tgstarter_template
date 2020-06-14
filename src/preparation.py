@@ -5,17 +5,17 @@ from aiogram.utils.exceptions import (
     UserDeactivated,
     TelegramAPIError,
 )
-import jinja2
-from motor.motor_asyncio import AsyncIOMotorClient
-import yaml
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
+from motor.motor_asyncio import AsyncIOMotorClient
+import jinja2
+import yaml
 
 from tgstarter import Bot, Dispatcher, MongoStorage, MongoLogger
 from tgstarter.utils import jinja2_filters
 from tgstarter.utils.content import ContentValidator
-
-from models.config import BaseConfig
 from tgstarter.utils import yaml_tools, helper
+
+from src.models.config import BaseConfig
 
 
 ANY_STATE = '*'
@@ -29,7 +29,7 @@ BROADCAST_EXCEPTIONS = (
 )
 
 
-CONFIG_PATH = 'settings/config.yaml'
+CONFIG_PATH = 'src/settings/config.yaml'
 YAMLS = yaml_tools.load_yamls(
     CONFIG_PATH,
     loader=yaml.SafeLoader

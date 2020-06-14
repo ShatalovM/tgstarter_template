@@ -2,7 +2,6 @@ from typing import Optional, List
 
 import pytz
 from pydantic import BaseModel, validator
-# from aiogram.types import ParseMode
 
 
 class BotConfig(BaseModel):

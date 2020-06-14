@@ -1,8 +1,8 @@
 from aiogram.types import Message, ReplyKeyboardRemove
 from django import forms
 
-from preparation import dispatcher as dp
-from settings import content
+from src.preparation import dispatcher as dp
+from src.settings import content
 
 
 EMAIL_FIELD = forms.EmailField()

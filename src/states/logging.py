@@ -5,8 +5,8 @@ from aiogram.dispatcher.handler import SkipHandler
 from aiogram import types
 from tgstarter.models.storage import LogLevel, LogType
 
-from utils.logging import log_event
-from preparation import logger, dispatcher as dp
+from src.utils.logging import log_event
+from src.preparation import logger, dispatcher as dp
 
 
 @dp.any_update_handler()

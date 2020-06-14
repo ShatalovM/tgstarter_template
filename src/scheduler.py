@@ -1,13 +1,13 @@
 import asyncio
-from datetime import datetime
 import calendar
+from datetime import datetime
 import logging
 
 from apscheduler.triggers.cron import CronTrigger
 from apscheduler.triggers.date import DateTrigger
 from apscheduler.triggers.interval import IntervalTrigger
 
-from preparation import scheduler, config
+from src.preparation import scheduler, config
 
 
 timezone = config.bot.timezone
