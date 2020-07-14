@@ -7,7 +7,7 @@ from tgstarter.models import storage as models
 from tgstarter.utils.typing import ExcInfo
 from tgstarter.utils.helper import function_fullname
 
-from preparation import config, logger, bot
+from src.preparation import config, logger, bot
 
 
 async def log_event(

@@ -12,7 +12,7 @@ from pydantic import (
 )
 from bson.objectid import ObjectId
 from tgstarter.utils.helper import FlagEnum, auto
-from utils.typing import UserId, ChatId
+from src.utils.typing import UserId, ChatId
 
 
 class MongoObject(BaseModel):

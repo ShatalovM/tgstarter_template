@@ -8,7 +8,7 @@ from tgstarter.utils.helper import (
     InlineKeyboardMarkup as InlineKeyboard,
 )
 
-from preparation import validated_class
+from src.preparation import validated_class
 
 
 @validated_class
