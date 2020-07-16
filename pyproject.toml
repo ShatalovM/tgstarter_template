@@ -11,6 +11,7 @@ tgstarter = {git = "https://github.com/tgstarter/tgstarter", branch = "dev-2.x"}
 django = "^3.0.5"
 pytz = "^2019.3"
 apscheduler = "^3.6.3"
+python-rapidjson = "^0.9.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
