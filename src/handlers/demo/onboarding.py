@@ -1,14 +1,16 @@
 from aiogram.types import Message, ReplyKeyboardRemove
 from django import forms
 
-from src.preparation import dispatcher as dp
+from src.preparation import dispatcher as dp, ANY_STATE
 from src.settings import content
+from src.utils.constants import State
 
 
 EMAIL_FIELD = forms.EmailField()
 
 
-@dp.state_handler(primary_state=True, bound=dp.message_handler)
+@dp.message_handler()
+@dp.message_handler(commands='start', state=ANY_STATE)
 async def greeting(msg: Message):
     await msg.answer(
         text=content.onboarding.greeting.text.render(
@@ -16,10 +18,10 @@ async def greeting(msg: Message):
         ),
         reply_markup=ReplyKeyboardRemove()
     )
-    return user_email
+    return State.USER_EMAIL
 
 
-@dp.state_handler(bound=dp.message_handler)
+@dp.message_handler(state=State.USER_EMAIL)
 async def user_email(msg: Message):
     try:
         EMAIL_FIELD.clean(msg.text)
@@ -28,10 +30,10 @@ async def user_email(msg: Message):
     else:
         await msg.answer(content.onboarding.user_email.valid)
         # here must be logic to save the email somewhere :)
-        return dummy_state
+        return State.DUMMY_STATE
 
 
-@dp.state_handler(bound=dp.message_handler)
+@dp.message_handler(state=State.DUMMY_STATE)
 async def dummy_state(msg: Message):
     await msg.answer(
         text=content.onboarding.test_inline_keyboard.text,

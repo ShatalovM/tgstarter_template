@@ -1,3 +1,5 @@
 [flake8]
 per-file-ignores =
     settings/content/*:E501
+max-line-length = 120
+ignore = W605

@@ -36,8 +36,8 @@ class test_keyboard:
     text = 'Send it again?'
     reply_markup = Keyboard(
         [
-            'Yes',
-            'Sure'
+            Button('Yes'),
+            Button('Sure'),
         ],
         Button(
             text='Give contact',

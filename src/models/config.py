@@ -16,7 +16,6 @@ class BotConfig(BaseModel):
     token: str
     proxy: Optional[str]
     parse_mode: str
-    states_dir: str
     timezone: pytz.tzinfo.DstTzInfo
     error_chat_id: int
 

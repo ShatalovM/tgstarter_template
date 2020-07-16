@@ -11,7 +11,7 @@ import jinja2
 import yaml
 
 from tgstarter import Bot, Dispatcher, MongoStorage, MongoLogger
-from tgstarter.utils import jinja2_filters
+from tgstarter.middlewares.state_switch import StateSwitch
 from tgstarter.utils.content import ContentValidator
 from tgstarter.utils import yaml_tools, helper
 
@@ -30,16 +30,12 @@ BROADCAST_EXCEPTIONS = (
 
 
 CONFIG_PATH = 'src/settings/config.yaml'
-YAMLS = yaml_tools.load_yamls(
-    CONFIG_PATH,
-    loader=yaml.SafeLoader
-)
+YAML_FILES = yaml_tools.load_yaml_files(CONFIG_PATH, loader=yaml.SafeLoader)
 
-config = BaseConfig(**YAMLS[CONFIG_PATH])
+config = BaseConfig(**YAML_FILES[CONFIG_PATH])
 
 
 jinja2_env = jinja2.Environment(autoescape=True)
-jinja2_env.filters['fullname'] = jinja2_filters.fullname_jinja2_filter
 template = helper.get_template_function(jinja2_env=jinja2_env)
 
 
@@ -72,11 +68,8 @@ bot = Bot(
     parse_mode=config.bot.parse_mode,
 )
 
-dispatcher = Dispatcher(
-    states_dir=config.bot.states_dir,
-    bot=bot,
-    storage=storage,
-)
-
+dispatcher = Dispatcher(bot=bot, storage=storage)
+STATE_SWITCH = StateSwitch(storage=storage)
+dispatcher.middleware.setup(STATE_SWITCH)
 
 scheduler = AsyncIOScheduler(timezone=config.bot.timezone)

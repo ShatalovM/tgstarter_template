@@ -3,7 +3,9 @@ dist/
 .idea/
 
 env/
+venv/
 __pycache__/
+.mypy_cache/
 
 config.yaml
 

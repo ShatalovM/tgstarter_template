@@ -11,7 +11,7 @@ bot:
   token: 123456789:XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
   proxy: null
   parse_mode: HTML
-  states_dir: states
+  states_dir: handlers
   timezone: Europe/Moscow
   error_chat_id: *dev_chat_id
 
